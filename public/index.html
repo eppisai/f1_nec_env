@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <!-- vue js -->
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <title>tut</title>
+</head>
+
+<body>
+
+  <div class="notification"></div>
+
+  <!-- auth modals -->
+  <div class="auth open">
+    <div class="modal">
+      <h2>Login</h2>
+      <form class="login">
+        <input type="text" name="email" placeholder="Email">
+        <input type="password" name="password" placeholder="Password">
+        <button>Login</button>
+        <p class="error"></p>
+      </form>
+      <div>No account? <a class="switch">Register instead</a></div>
+    </div>
+    <div class="modal">
+      <h2>Register</h2>
+      <form class="register">
+        <input type="text" name="email" placeholder="Email">
+        <input type="password" name="password" placeholder="Password">
+        <button>Register</button>
+        <p class="error"></p>
+      </form>
+      <div>Got an account? <a class="switch">Login instead</a></div>
+    </div>
+  </div>
+
+  <!-- new complain modal -->
+  <div class="new-complain">
+    <div class="modal">
+      <h2>Write a Complian</h2>
+      <form>
+        <input type="text" name="complain" placeholder="write,bitch...">
+        <button>Submit Complain</button>
+        <p class="error"></p>
+      </form>
+    </div>
+  </div>
+
+  <header>
+    <nav>
+      <a class="add-complain">Add a Complain</a>
+      <a class="sign-out">Sign Out</a>
+    </nav>
+  </header>
+  <section class="content" id="app">
+    <h1>Complain System</h1>
+    <ul class="complain-list">
+      <li v-for="complain in complains">
+        <span class="text">{{ complain.text }}</span>
+        <div>
+          <span class="votes">{{ complain.upvotes }}</span>
+          <i class="material-icons upvote" v-on:click="upvoteComplain(complain.id)">arrow_upward</i>
+        </div>
+      </li>
+    </ul>
+
+  </section>
+
+  <!-- vue js -->
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="/__/firebase/7.12.0/firebase-app.js"></script>
+
+
+  <script src="/__/firebase/7.12.0/firebase-auth.js"></script>
+  <script src="/__/firebase/7.12.0/firebase-firestore.js"></script>
+  <script src="/__/firebase/7.12.0/firebase-functions.js"></script>
+
+
+  <!-- Initialize Firebase -->
+  <script src="/__/firebase/init.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/complain.js"></script>
+</body>
+
+</html>
